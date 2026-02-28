@@ -10,7 +10,7 @@ matrix *matrix_exp(const matrix *A, double eps);
 
 // Решение AX=B методом Гаусса с выбором главного элемента по столбцу.
 // A: n×n, B: n×m. Выход X: n×m (должна быть заранее выделена правильного размера).
-// 0 успех, -1 ошибка (размеры/память/вырожденность)
+// 0 успех, -1 ошибка 
 int matrix_solve_gauss(matrix *X, const matrix *A, const matrix *B, double eps);
 
 #endif
