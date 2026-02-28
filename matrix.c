@@ -1,12 +1,12 @@
-#include "matrix.h"     // объявления типа matrix и функций
+#include "matrix.h"     
 
-#include <stdlib.h>     // malloc, free — выделение/освобождение памяти
+#include <stdlib.h>     
 #include <string.h>     // memcpy — копирование блоков памяти
 #include <stdint.h>     // SIZE_MAX — максимум для size_t (для проверки переполнения)
 
-// Внутренняя структура матрицы (скрыта от пользователя через opaque type в .h)
+// Внутренняя структура матрицы 
 struct matrix {
-    double *data;       // данные матрицы в одном массиве (строчно-ориентированно): data[w*i + j]
+    double *data;       // данные матрицы в одном массиве: data[w*i + j]
     size_t w, h;        // w = число столбцов, h = число строк
 };
 
@@ -49,7 +49,7 @@ matrix *matrix_alloc(size_t w, size_t h) {
     return m;
 }
 
-// Освобождение матрицы (безопасно для NULL)
+// Освобождение матрицы 
 void matrix_free(matrix *m) {
     if (!m) return;
     free(m->data);  // сначала данные
@@ -135,7 +135,7 @@ int matrix_assign(matrix *m1, const matrix *m2) {
     return 0;
 }
 
-// Создаёт полную копию матрицы (новая память)
+// Создаёт полную копию матрицы
 matrix *matrix_copy(const matrix *m) {
     if (!m) return NULL;
     matrix *c = matrix_alloc(m->w, m->h);
@@ -147,7 +147,7 @@ matrix *matrix_copy(const matrix *m) {
     return c;
 }
 
-// Читает элементы матрицы из потока FILE* (stdin или файл)
+// Читает элементы матрицы из потока FILE* 
 // Ожидает m->h * m->w чисел типа double
 // 0 — успех, -1 — ошибка чтения
 int matrix_read(matrix *m, FILE *in) {
@@ -162,7 +162,7 @@ int matrix_read(matrix *m, FILE *in) {
     return 0;
 }
 
-// Печатает матрицу в поток FILE* (stdout/stderr/файл)
+// Печатает матрицу в поток FILE* (stdout/stderr)
 void matrix_print(const matrix *m, FILE *out) {
     if (!out) return;
     if (!m) {
