@@ -2,7 +2,7 @@
 #define MATRIX_H
 
 #include <stddef.h> // size_t
-#include <stdio.h>  // FILE
+#include <stdio.h>  // FILE - он тут нужен для потоков ввода/вывода - работа с консолью
 
 // Opaque type (инкапсуляция)
 typedef struct matrix matrix;
